@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://127.0.0.1:5500/Html/valent.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe Script', cursive;
+            background: linear-gradient(135deg, #1b0f2f, #4b1e4d, #a83279);
+            overflow: hidden;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        /* Floating background circles */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 105, 180, 0.4);
+            filter: blur(15px);
+            animation: float 6s infinite ease-in-out alternate;
+            z-index: 0;
+        }
+
+        .circle:nth-child(1) { width: 120px; height: 120px; top: 20%; left: 15%; animation-delay: 0s; }
+        .circle:nth-child(2) { width: 80px; height: 80px; bottom: 25%; right: 20%; background: rgba(255, 0, 100, 0.5); animation-delay: 1s; }
+        .circle:nth-child(3) { width: 150px; height: 150px; top: 10%; right: 30%; background: rgba(255, 20, 147, 0.3); animation-delay: 2s; }
+        .circle:nth-child(4) { width: 60px; height: 60px; bottom: 15%; left: 25%; background: rgba(255, 182, 193, 0.5); animation-delay: 0.5s; }
+
+        @keyframes float {
+            from { transform: translateY(0px) rotate(0deg); }
+            to { transform: translateY(-40px) rotate(20deg); }
+        }
+
+        .text-container {
+            text-align: center;
+            z-index: 1;
+            user-select: none;
+            padding: 20px;
+        }
+
+        h1 {
+            color: beige;
+            font-size: clamp(30px, 8vw, 55px);
+            margin: 0;
+            animation: glow 2s infinite alternate;
+        }
+
+        .question {
+            color: #ffb6c1;
+            font-size: clamp(18px, 4vw, 28px);
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 2s ease-in forwards 1s;
+        }
+
+        .joke {
+            color: #ffb6c1;
+            font-size: clamp(16px, 3.5vw, 24px);
+            margin-top: 15px;
+            font-style: italic;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in forwards 6s; 
+        }
+
+        .choice-box {
+            margin-top: 30px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in forwards 8s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            align-items: center;
+            height: 100px; /* Prevents layout jumping when Yes grows */
+        }
+
+        button {
+            padding: 10px 30px;
+            font-family: 'Segoe Script', cursive;
+            font-size: 18px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.5s ease;
+        }
+
+        #yesBtn {
+            background-color: #ff69b4;
+            color: white;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+        }
+
+        #noBtn {
+            background-color: #fdf2e9;
+            color: #4b1e4d;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(255, 182, 193, 0.8); }
+            to { text-shadow: 0 0 30px rgba(255, 20, 147, 1); }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(-5px); }
+        }
+
+        .heart-click {
+            position: absolute;
+            font-size: 20px;
+            user-select: none;
+            pointer-events: none;
+            z-index: 10;
+            animation: flyUp 2s ease-out forwards;
+        }
+
+        @keyframes flyUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-300px) rotate(45deg) scale(2); opacity: 0; }
+        }
+    </style>
+<!-- Code injected by Five-server -->
+  <script async="" data-id="five-server" data-file="c:\Users\demsa\OneDrive\Documents\Codes\Html\valent.html" type="application/javascript" src="./index_files/fiveserver.js.download"></script>
+  <style>      
+      /* Injected by five-server */
+      /*[data-highlight="true"] {
+        border: 1px rgb(90,170,255) solid !important;
+        background-color: rgba(155,215,255,0.5);
+        animation: fadeOutHighlight 1s forwards 0.5s;
+      }
+      img[data-highlight="true"] {
+        filter: sepia(100%) hue-rotate(180deg) saturate(200%);
+        animation: fadeOutHighlightIMG 0.5s forwards 0.5s;
+      }*/
+      @keyframes fadeOutHighlight {
+        from {background-color: rgba(155,215,255,0.5);}
+        to {background-color: rgba(155,215,255,0);}
+      }      
+      @keyframes fadeOutHighlightIMG {
+        0% {filter: sepia(100%) hue-rotate(180deg) saturate(200%);}
+        33% {filter: sepia(66%) hue-rotate(180deg) saturate(100%);}
+        50% {filter: sepia(50%) hue-rotate(90deg) saturate(50%);}
+        66% {filter: sepia(33%) hue-rotate(0deg) saturate(100%);}
+        100% {filter: sepia(0%) hue-rotate(0deg) saturate(100%);}
+      }
+      @keyframes fiveserverInfoPopup {
+        0%   {top:-40px;}
+        15%  {top:4px;}
+        85%  {top:4px;}
+        100% {top:-40px;}
+      }
+      /*smaller*/
+      @media (max-width: 640px) {
+        #fiveserver-info-wrapper {
+          max-width: 98%;
+        }
+        #fiveserver-info {
+          border-radius: 0px;
+        }      
+      }
+
+      </style></head>
+<body>
+
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle ="></div>
+    <div class="circle"></div>
+
+    <div class="text-container" id="mainContent">
+        <h1>Happy Valentine's Day!</h1>
+        <p class="question">Perhaps you could... I don't know...be my... valentines...</p>
+        <p class="joke">just kidding HAHAHAHHA</p>
+        
+        <div class="choice-box">
+            <p style="opacity: 1; color: beige; font-size: 22px;">Would you like to see my letter?</p>
+            <div class="btn-group">
+                <button id="yesBtn" onclick="openLetter()">Yes</button>
+                <button id="noBtn" onclick="shrinkNo()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let yesScale = 1;
+        let noScale = 1;
+
+        function shrinkNo() {
+            yesScale += 0.4; 
+            noScale -= 0.15; 
+            
+            const yesBtn = document.getElementById('yesBtn');
+            const noBtn = document.getElementById('noBtn');
+
+            yesBtn.style.transform = `scale(${yesScale})`;
+            noBtn.style.transform = `scale(${noScale})`;
+
+            // Scene change when No button gets tiny
+            if (noScale <= 0.1) {
+                noBtn.style.opacity = "0";
+                noBtn.style.pointerEvents = "none";
+                
+                setTimeout(() => {
+                    showAlternativeScene();
+                }, 500);
+            }
+        }
+
+        function showAlternativeScene() {
+            const main = document.getElementById('mainContent');
+            main.style.opacity = "0";
+            
+            setTimeout(() => {
+                main.innerHTML = `
+                    <h1 style="font-size: clamp(24px, 6vw, 40px);">It's okay...</h1>
+                    <p style="opacity:1; font-size: 22px; color: #ffb6c1;">Still happy valentine's day! ❤️</p>
+                `;
+                main.style.opacity = "1";
+            }, 500);
+        }
+
+        function openLetter() {
+            const main = document.getElementById('mainContent');
+            main.style.opacity = "0";
+            
+            setTimeout(() => {
+                main.innerHTML = `
+                    <h1 style="font-size: 28px;">My Dearest...</h1>
+                    <p style="opacity:1; font-size: 16px; color: white; line-height: 1.8; max-width: 350px; margin: 20px auto;">
+                        I'm so happy you wanted to see this. You mean the world to me, and I wanted to make something as special as you are. <br><br>
+                        Thank you for being my valentine. ❤️
+                    </p>
+                `;
+                main.style.opacity = "1";
+            }, 500);
+        }
+
+        function createHeart(x, y) {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.className = 'heart-click';
+            heart.style.left = (x - 10) + 'px';
+            heart.style.top = (y - 10) + 'px';
+            const size = Math.random() * 15 + 15;
+            heart.style.fontSize = size + 'px';
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 2000);
+        }
+
+        document.addEventListener('mousedown', (e) => createHeart(e.pageX, e.pageY));
+        document.addEventListener('touchstart', (e) => {
+            createHeart(e.touches[0].pageX, e.touches[0].pageY);
+        });
+    </script>
+
+</body></html>
