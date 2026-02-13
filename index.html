@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>reviewer must check</title>
+    <title>Reviewer</title>
     
     <style>
         body {
@@ -19,7 +19,6 @@
             touch-action: manipulation;
         }
 
-        
         .circle {
             position: absolute;
             border-radius: 50%;
@@ -44,7 +43,7 @@
             z-index: 1;
             user-select: none;
             padding: 20px;
-            transition: opacity 0.8s ease;
+            transition: opacity 0.5s ease;
         }
 
         h1 {
@@ -175,7 +174,7 @@
         const music = document.getElementById('vdayMusic');
 
         function startMusic() {
-            music.play().catch(e => console.log("Music blocked until more interaction."));
+            music.play().catch(e => console.log("Music interaction required."));
         }
 
         function shrinkNo() {
@@ -208,35 +207,46 @@
             }, 500);
         }
 
-        function openLetter() {
-            startMusic(); 
+        async function updateLoadingText(text) {
             const main = document.getElementById('mainContent');
             main.style.opacity = "0";
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    main.innerHTML = `
+                        <div class="loader"></div>
+                        <p style="color: white; opacity: 1; font-size: 20px;">${text}</p>
+                    `;
+                    main.style.opacity = "1";
+                    setTimeout(resolve, 5000); 
+                }, 500);
+            });
+        }
+
+        async function openLetter() {
+            startMusic(); 
+            const main = document.getElementById('mainContent');
             
+            
+            await updateLoadingText("Aysa lang ha");
+            await updateLoadingText("aysa hinay wifi");
+            await updateLoadingText("please be patient");
+            await updateLoadingText("sge naa ra");
+
+           
+            main.style.opacity = "0";
             setTimeout(() => {
                 main.innerHTML = `
-                    <div class="loader"></div>
-                    <p style="color: white; opacity: 1; font-size: 18px;">Preparing something for Clovie...</p>
+                    <div class="paper-container">
+                        <h2 style="margin-top:0; color: #a83279; font-size: 22px;">To sapoton,</h2>
+                        <p>To start off, yeah, an HTML Valentine’s, pretty usual right? HAHAHA</p>
+                        <p>We barely talk in person but chatting with you online has been really fun. I hope that in the future we can talk without feeling shy with each other because I, too, get shyness HAHAHA. .</p>
+                        <p> So… I guess you’ve become someone I like thinking about. Perhaps too soon? Maybe. Who knowssss</p>
+                        <p>Happy Valentine’s Day, Clovie.</p>
+                        <p style="text-align: right; margin-top: 20px;">Sincerely the person you hate</p>
+                    </div>
                 `;
                 main.style.opacity = "1";
             }, 800);
-
-            setTimeout(() => {
-                main.style.opacity = "0";
-                setTimeout(() => {
-                    main.innerHTML = `
-                        <div class="paper-container">
-                            <h2 style="margin-top:0; color: #a83279; font-size: 22px;">To Clovie,</h2>
-                            <p>To start off, yeah, an HTML Valentine’s, pretty usual right? HAHAHA</p>
-                            <p>We barely talk in person but chatting with you online has been really fun. So… I guess you’ve become someone I like thinking about.</p>
-                            <p>Perhaps too soon? Maybe. Who knowssss</p>
-                            <p>Happy Valentine’s Day, Clovie.</p>
-                            <p style="text-align: right; margin-top: 20px;">❤️</p>
-                        </div>
-                    `;
-                    main.style.opacity = "1";
-                }, 800);
-            }, 3000); 
         }
     </script>
 </body>
