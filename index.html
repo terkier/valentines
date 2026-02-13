@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For You ❤️</title>
+    <title>reviewer must check</title>
+    
     <style>
         body {
             margin: 0;
@@ -18,7 +19,7 @@
             touch-action: manipulation;
         }
 
-        /* Floating background circles */
+        
         .circle {
             position: absolute;
             border-radius: 50%;
@@ -108,7 +109,6 @@
             color: #4b1e4d;
         }
 
-        /* Paper Letter Styling */
         .paper-container {
             background: #fffef0;
             background-image: linear-gradient(#e1e1e1 1px, transparent 1px);
@@ -137,18 +137,18 @@
         }
 
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
         @keyframes glow {
             from { text-shadow: 0 0 10px rgba(255, 182, 193, 0.8); }
             to { text-shadow: 0 0 30px rgba(255, 20, 147, 1); }
         }
-
-        @keyframes fadeIn {
-            to { opacity: 1; transform: translateY(-5px); }
-        }
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(-5px); } }
     </style>
 </head>
 <body>
+
+    <audio id="vdayMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="circle"></div>
     <div class="circle"></div>
@@ -172,8 +172,14 @@
     <script>
         let yesScale = 1;
         let noScale = 1;
+        const music = document.getElementById('vdayMusic');
+
+        function startMusic() {
+            music.play().catch(e => console.log("Music blocked until more interaction."));
+        }
 
         function shrinkNo() {
+            startMusic(); 
             yesScale += 0.4; 
             noScale -= 0.15; 
             
@@ -193,44 +199,44 @@
         function showAlternativeScene() {
             const main = document.getElementById('mainContent');
             main.style.opacity = "0";
-            
             setTimeout(() => {
                 main.innerHTML = `
                     <h1 style="font-size: clamp(24px, 6vw, 40px);">It's okay...</h1>
-                    <p style="opacity:1; font-size: 22px; color: #ffb6c1;">Still happy valentine's day! ❤️</p>
+                    <p style="opacity:1; font-size: 22px; color: #ffb6c1;">Still happy valentine's day, Clovie! ❤️</p>
                 `;
                 main.style.opacity = "1";
             }, 500);
         }
 
         function openLetter() {
+            startMusic(); 
             const main = document.getElementById('mainContent');
             main.style.opacity = "0";
             
-            // Show loading delay
             setTimeout(() => {
                 main.innerHTML = `
                     <div class="loader"></div>
-                    <p style="color: white; opacity: 1; font-size: 18px;">Opening your letter...</p>
+                    <p style="color: white; opacity: 1; font-size: 18px;">Preparing something for Clovie...</p>
                 `;
                 main.style.opacity = "1";
             }, 800);
 
-            // Final paper reveal
             setTimeout(() => {
                 main.style.opacity = "0";
                 setTimeout(() => {
                     main.innerHTML = `
                         <div class="paper-container">
-                            <h2 style="margin-top:0; color: #a83279;">My Dearest...</h2>
-                            <p>I'm so happy you wanted to see this. You mean the world to me, and I wanted to make something as special as you are.</p>
-                            <p>Thank you for being my valentine and for being yourself. You make every day brighter.</p>
-                            <p style="text-align: right; margin-top: 20px;">❤️ Always yours.</p>
+                            <h2 style="margin-top:0; color: #a83279; font-size: 22px;">To Clovie,</h2>
+                            <p>To start off, yeah, an HTML Valentine’s, pretty usual right? HAHAHA</p>
+                            <p>We barely talk in person but chatting with you online has been really fun. So… I guess you’ve become someone I like thinking about.</p>
+                            <p>Perhaps too soon? Maybe. Who knowssss</p>
+                            <p>Happy Valentine’s Day, Clovie.</p>
+                            <p style="text-align: right; margin-top: 20px;">❤️</p>
                         </div>
                     `;
                     main.style.opacity = "1";
                 }, 800);
-            }, 3000); // 3 second delay for "details"
+            }, 3000); 
         }
     </script>
 </body>
